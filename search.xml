@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>数组指针和指针数组</title>
+      <link href="/2023/04/25/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/"/>
+      <url>/2023/04/25/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数组指针和指针数组"><a href="#数组指针和指针数组" class="headerlink" title="数组指针和指针数组"></a>数组指针和指针数组</h1><p>首先，理解一下数组指针和指针数组这两个名词：</p><p>“数组指针”和“指针数组”，只要在名词中间加上“的”字，就知道中心了——</p><p>数组的指针：是一个指针，什么样的指针呢？指向数组的指针。</p><p>指针的数组：是一个数组，什么样的数组呢？装着指针的数组。</p><p>然后，需要明确一个优先级顺序：()&gt;[]&gt;*，所以：</p><p>(*p)[n]：根据优先级，先看括号内，则p是一个指针，这个指针指向一个一维数组，数组长度为n，这是“数组的指针”，即数组指针；</p><p><em>p[n]：根据优先级，先看[]，则p是一个数组，再结合</em>，这个数组的元素是指针类型，共n个元素，这是“指针的数组”，即指针数组。</p><p>根据上面两个分析，可以看出，p是什么，则词组的中心词就是什么，即数组“指针”和指针“数组”。</p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> *p1[<span class="number">5</span>]；</span><br><span class="line"><span class="type">int</span> (*p2)[<span class="number">5</span>]；</span><br></pre></td></tr></table></figure><p>首先，对于语句“<code>int*p1[5]</code>”，因为“[]”的优先级要比“*”要高，所以 <code>p1</code> 先与“[]”结合，构成一个数组的定义，数组名为 p1，而“<code>int*</code>”修饰的是数组的内容，即数组的每个元素。也就是说，该数组包含 5 个指向 int 类型数据的指针。</p><p>其次，对于语句“<code>int(*p2)[5]</code>”，“()”的优先级比“[]”高，“<code>*</code>”号和 <code>p2</code> 构成一个指针的定义，指针变量名为 p2，而 int 修饰的是数组的内容，即数组的每个元素。也就是说，p2 是一个指针，它指向一个包含 5 个 int 类型数据的数组。</p><p>由此可见，对指针数组来说，首先它是一个数组，数组的元素都是指针，也就是说该数组存储的是指针，数组占多少个字节由数组本身决定；而对数组指针来说，首先它是一个指针，它指向一个数组，也就是说它是指向数组的指针。</p><h1 id="数组指针-p-n"><a href="#数组指针-p-n" class="headerlink" title="数组指针 (*p)[n]"></a>数组指针 <code>(*p)[n]</code></h1><p>数组指针：是指针——指向数组的指针。</p><pre><code>#include &lt;iostream&gt;int main()&#123;    //一维数组    int a[5] = &#123; 1, 2, 3, 4, 5 &#125;;    //步长为5的数组指针，即数组里有5个元素    int(*p)[5];    //把数组a的地址赋给p，则p为数组a的地址，则*p表示数组a本身    p = &amp;a;    //%p输出地址, %d输出十进制    //\n回车    //在C中，在几乎所有使用数组的表达式中，数组名的值是个指针常量，也就是数组第一个元素的地址，它的类型取决于数组元素的类型。    printf(&quot;%p\n&quot;, a); //输出数组名，一般用数组的首元素地址来标识一个数组，则输出数组首元素地址    printf(&quot;%p\n&quot;, p); //根据上面，p为数组a的地址，输出数组a的地址    printf(&quot;%p\n&quot;, *p); //*p表示数组a本身，一般用数组的首元素地址来标识一个数组    printf(&quot;%p\n&quot;, &amp;a[0]); //a[0]的地址    printf(&quot;%p\n&quot;, &amp;a[1]); //a[1]的地址    printf(&quot;%p\n&quot;, p[0]); //数组首元素的地址    printf(&quot;%d\n&quot;, **p); //*p为数组a本身，即为数组a首元素地址，则*(*p)为值，当*p为数组首元素地址时，**p表示首元素的值1    printf(&quot;%d\n&quot;, *p[0]); //根据优先级，p[0] 表示首元素地址，则*p[0]表示首元素本身，即首元素的值1    printf(&quot;%d\n&quot;, *p[1]); //为一个绝对值很大的负数，不表示a[1]...表示什么我还不知道    //将二维数组赋给指针    int b[3][4];    int(*pp)[4]; //定义一个数组指针，指向含4个元素的一维数组    pp = b; //将该二维数组的首地址赋给pp，也就是b[0]或&amp;b[0]，二维数组中pp=b和pp=&amp;b[0]是等价的    pp++; //pp=pp+1，该语句执行过后pp的指向从行b[0][]变为了行b[1][]，pp=&amp;b[1]    int k;    scanf_s(&quot;%d&quot;, &amp;k);    return 0;&#125;</code></pre><p><img src="/../images/szzz.png" alt="数组指针"></p><p>据上面二维数组可以得出，数组指针也称指向一维数组的指针，所以数组指针也称行指针。</p><h1 id="指针数组-p-n"><a href="#指针数组-p-n" class="headerlink" title="指针数组 *p[n]"></a>指针数组 *p[n]</h1><p>指针数组：是数组——装着指针的数组。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int a = 1;</span><br><span class="line">int b = 2;</span><br><span class="line">int* p[2];</span><br><span class="line">p[0] = &amp;a;</span><br><span class="line">p[1] = &amp;b;</span><br><span class="line">printf(&quot;%p\n&quot;, p[0]); //a的地址</span><br><span class="line">printf(&quot;%p\n&quot;, &amp;a); //a的地址</span><br><span class="line">printf(&quot;%p\n&quot;, p[1]); //b的地址</span><br><span class="line">printf(&quot;%p\n&quot;, &amp;b); //b的地址</span><br><span class="line">printf(&quot;%d\n&quot;, *p[0]); //p[0]表示a的地址，则*p[0]表示a的值</span><br><span class="line">printf(&quot;%d\n&quot;, *p[1]); //p[1]表示b的地址，则*p[1]表示b的值</span><br><span class="line">//将二维数组赋给指针数组</span><br><span class="line">int* pp[3]; //一个一维数组内存放着三个指针变量，分别是p[0]、p[1]、p[2]，所以要分别赋值</span><br><span class="line">int c[3][4];</span><br><span class="line">for (int i = 0; i &lt; 3; i++)</span><br><span class="line">pp[i] = c[i];</span><br><span class="line">int k;</span><br><span class="line">scanf_s(&quot;%d&quot;, &amp;k);</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/../images/zzsz.png" alt="指针数组"></p><p>最后，从上文来看：</p><p>数组指针是一个指针变量，占有内存中一个指针的存储空间；</p><p>指针数组是多个指针变量，以数组的形式存储在内存中，占有多个指针的存储空间。</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>提示：这里对文章进行总结：<br>1.数组指针简单理解为“数组的指针”，首先这个变量是一个指针，其次，”数组”修饰这个指针，意思是说这个指针存放着一个数组的首地址，或者说这个指针指向一个数组的首地址。<br>2.指针数组简单理解为“指针的数组”，首先这个变量是一个数组，其次，”指针p”修饰这个数组，意思是说这个数组的所有元素都是指针类型。<br>3.关于函数传参的问题：传递的参数：int *p[4] -&gt; 匹配需要的形参：int **p（指针数组或者二级指针）；传递的参数：int (*p)[4] -&gt; 匹配需要的形参：int (*p)[4]（不变）。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 数组 指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>my first blog</title>
       <link href="/2023/04/19/my-first-blog/"/>
       <url>/2023/04/19/my-first-blog/</url>
@@ -56,9 +75,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -67,9 +86,9 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -100,9 +119,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
