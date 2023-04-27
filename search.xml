@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>基本概念和术语</title>
+      <link href="/2023/04/27/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD/"/>
+      <url>/2023/04/27/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><h2 id="数据-1"><a href="#数据-1" class="headerlink" title="数据"></a>数据</h2><ul><li><p>是能输入计算机且能被计算机处理的各种符号的集合</p></li><li><p>信息的载体</p></li><li><p>是对客观事物符号化的表示</p></li><li><p>能够被计算机识别、存储和加工</p></li></ul><p><strong>包括</strong></p><ul><li>数值型的数据： 整数、实数等</li><li>非数值型的数据： 文字、图像、图形、声音等</li></ul><h1 id="数据元素和数据项"><a href="#数据元素和数据项" class="headerlink" title="数据元素和数据项"></a>数据元素和数据项</h1><h2 id="数据元素"><a href="#数据元素" class="headerlink" title="数据元素"></a>数据元素</h2><ul><li>是数据的<strong>基本单位</strong>，在计算机程序中通常作为一个整体进行考虑和处理。</li><li>也简称为元素，或称为记录、结点或顶点。</li><li>一个<strong>数据元素</strong>可由若干个<strong>数据项</strong>组成</li></ul><h2 id="数据项"><a href="#数据项" class="headerlink" title="数据项"></a>数据项</h2><ul><li>构成数据元素的不可分割的<strong>最小单位</strong>。</li><li>数据、数据元素、数据项三者之间的关系：</li></ul><p>​          <strong>数据  &gt;  数据  &gt;  数据项</strong> </p><p>​      例如： 学生表  个人记录  学号、姓名…</p><h1 id="数据对象"><a href="#数据对象" class="headerlink" title="数据对象"></a>数据对象</h1><ul><li>是<strong>性质相同的数据元素的集合</strong>，是数据的一个子集。</li></ul><p>例如： </p><ul><li><strong>整数</strong>数据对象是集合N&#x3D;{0, 1, 2….}</li><li><strong>字母</strong>字符数据对象是集合C&#x3D;{‘A’，‘B’,…}</li></ul><h1 id="数据元素与数据对象"><a href="#数据元素与数据对象" class="headerlink" title="数据元素与数据对象"></a>数据元素与数据对象</h1><ul><li><p>数据元素–组成数据的基本单位</p><ul><li>与数据的关系： 是集合的个体</li></ul></li><li><p>数据对象–性质相同的数据元素的集合</p><ul><li>与数据的关系是： 集合的子集</li></ul></li></ul><h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h2><ul><li>数据元素不是孤立存在的，它们之间存在着某种关系，<strong>数据元素相互之间的关系称为结构</strong></li><li>是指<strong>相互之间存在一种或多种特定关系</strong>的数据元素集合</li><li>或者说，数据结构是<strong>带结构</strong>的数据元素的集合</li></ul><h2 id="数据结构包括以下三个方面的内容"><a href="#数据结构包括以下三个方面的内容" class="headerlink" title="数据结构包括以下三个方面的内容:"></a>数据结构包括以下三个方面的内容:</h2><ol><li>数据元素之间的逻辑关系，也称为<strong>逻辑结构</strong>。</li><li>数据元素及其关系在计算机内存中的表示(又称为<strong>映像</strong>)），称为数据的<strong>物理结构</strong>或数据的存储结构。</li><li>数据的<strong>运算和实现</strong>，即对数据元素可以施加的操作以及这些操作在相应的存储结构上的实现。</li></ol><h1 id="数据结构的两个层次"><a href="#数据结构的两个层次" class="headerlink" title="数据结构的两个层次"></a>数据结构的两个层次</h1><h2 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h2><ul><li>描述数据元素之间的逻辑关系</li><li>与数据的存储无关，独立于计算机</li><li>是从具体问题抽象出来的数学模型</li></ul><h2 id="物理结构-存储结构"><a href="#物理结构-存储结构" class="headerlink" title="物理结构(存储结构)"></a>物理结构(存储结构)</h2><ul><li>数据元素及其关系在计算机存储器中的结构(存储方式)</li><li>是数据结构在计算机中的表示</li></ul><h2 id="逻辑结构与存储结构的关系"><a href="#逻辑结构与存储结构的关系" class="headerlink" title="逻辑结构与存储结构的关系:"></a>逻辑结构与存储结构的关系:</h2><ul><li>存储结构是逻辑关系的映象与元素本身的映象。<br>逻辑结构是数据结构的抽象，存储结构是数据结构的实现</li><li>两者综合起来建立了数据元素之间的结构关系。</li></ul><h2 id="逻辑结构的种类"><a href="#逻辑结构的种类" class="headerlink" title="逻辑结构的种类"></a>逻辑结构的种类</h2><h3 id="划分方法一"><a href="#划分方法一" class="headerlink" title="划分方法一"></a>划分方法一</h3><p><strong>(1）线性结构</strong><br>            有且仅有一个开始和一个终端结点，并且所有结点都最多只有一个直接前趋和一个直接后继。<br>            例如:线性表、栈、队列、串</p><p><strong>(2）非线性结构</strong><br>           一个结点可能有多个直接前趋和直接后继</p><p>​           例如:树、图</p><h3 id="划分方式二——四类基本逻辑结构"><a href="#划分方式二——四类基本逻辑结构" class="headerlink" title="划分方式二——四类基本逻辑结构"></a>划分方式二——四类基本逻辑结构</h3><ol><li>**集合结构:**结构中的数据元素之间除了同属于一个集合的关系外，无任何其它关系。</li><li><strong>线性结构</strong>:结构中的数据元素之间存在着一对一的线性关系。</li><li>**树形结构:**结构中的数据元素之间存在着一对多的层次关系。</li><li><strong>图状结构或网状结构</strong>:<strong>结构中的数据元素之间存在着</strong>多对多**的任意关系。</li></ol><h3 id="四种基本的存储结构–1"><a href="#四种基本的存储结构–1" class="headerlink" title="四种基本的存储结构–1"></a>四种基本的存储结构–1</h3><h4 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构:"></a>顺序存储结构:</h4><ul><li>用一组<strong>连续</strong>的存储单元<strong>依次</strong>存储数据元素，<strong>数据元素之间的逻辑关系</strong>由元素的<strong>存储位置</strong>来表示。</li><li>C语言中用<strong>数组</strong>来实现顺序存储结构</li></ul><h3 id="四种基本的存储结构–2"><a href="#四种基本的存储结构–2" class="headerlink" title="四种基本的存储结构–2"></a>四种基本的存储结构–2</h3><h4 id="链接存储结构"><a href="#链接存储结构" class="headerlink" title="链接存储结构:"></a>链接存储结构:</h4><ul><li>用一组<strong>任意</strong>的存储单元存储数据元素，数据元素之间的逻辑关系用<strong>指针</strong>来表示。</li><li>C语言中用指针来实现链式存储结构<br>例:(bat, cat, eat……,mat)</li></ul><h3 id="四种基本的存储结构–3索引存储结构"><a href="#四种基本的存储结构–3索引存储结构" class="headerlink" title="四种基本的存储结构–3索引存储结构"></a>四种基本的存储结构–3索引存储结构</h3><ul><li>在存储结点信息的同时，还建立附加的<strong>索引表</strong>。</li><li>索引表中的每示项称为、一个<strong>索引项</strong>，<br>索引项的<strong>一般形式</strong>是:(关键字，地址)</li><li>关键字是能<strong>唯一标识</strong>一个结点的那些数据项。</li><li>若每个结点在索引表中都有一个索引项，则该索引表称之为<strong>稠密索引</strong>(Dense Index)。若一组结点在索引表中只对应一个索引项，则该索引表称之为<strong>稀疏索引</strong>(Sparse Index)。</li></ul><h3 id="四种基本的存储结构–4"><a href="#四种基本的存储结构–4" class="headerlink" title="四种基本的存储结构–4"></a>四种基本的存储结构–4</h3><h4 id="散列存储结构"><a href="#散列存储结构" class="headerlink" title="散列存储结构"></a>散列存储结构</h4><ul><li><p>根据结点的关键字直接计算出该结点的存储地址。</p><p><img src="/../images/key1.png"></p><p>得到的散列表如下:</p><p><img src="/../images/%E6%95%A3%E5%88%97%E8%A1%A8.png"></p></li></ul><h1 id="数据类型和抽象数据类型"><a href="#数据类型和抽象数据类型" class="headerlink" title="数据类型和抽象数据类型"></a>数据类型和抽象数据类型</h1><ul><li><p>在使用高级程序设计语言编写程序时，必须对程序中出现的每个变量、常量或表达式，明确说明它们所属的<strong>数据类型</strong>。</p><ul><li>例如，C语言中:<ul><li>·提供int，char, float, double等基本数据类型</li><li>数组、结构、共用体、枚举等构造数据类型</li><li>还有指针、空(void)类型</li><li>用户也可用typedef自己定义数据类型</li></ul></li></ul></li><li><p>一些最基本数据结构可以用数据类型来实现，如数组、字符串等;</p></li><li><p>而另一些常用的数据结构，如栈、队列、树、图等，不能直接用数据类型来表示。</p></li><li><p>高级语言中的数据类型明显地或隐含地规定了在程序执行期间变量和表达的所有可能的取值范围，以及在这些数值范围上所允许进行的操作。</p><ul><li><p>例如，C语言中定义变量达int类型，就表示i是[-min,max]范围的整数在这个整数集上可以进行+、-、*、\、%等操作</p></li><li><p><strong>数据类型的作用</strong></p><ul><li><p>约束变量或常量的取值范围</p></li><li><p>约束变量或常量的操作。</p></li></ul></li></ul></li></ul><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul><li><p>定义：<strong>数据类型</strong>是一组性质相同的<strong>值的集合</strong>以及定义于这个值集合上的<strong>一组操作</strong>的总称。</p><p><strong>数据类型&#x3D;值的集合+值集合上的一组操作</strong></p></li></ul><h3 id="抽象数据模型"><a href="#抽象数据模型" class="headerlink" title="抽象数据模型"></a>抽象数据模型</h3><p><strong>是指一个数学模型以及定义在此数学模型上的一组操作</strong>。</p><ul><li>由用户定义,从问题抽象出<strong>数据模型</strong>（逻辑结构)</li><li>还包括定义在数据模型上的一组<strong>抽象运算</strong>(相关操作)</li><li>不考虑计算机内的具体存储结构与运算的具体实现算法</li></ul><h3 id="抽象数据类型的形式定义"><a href="#抽象数据类型的形式定义" class="headerlink" title="抽象数据类型的形式定义"></a>抽象数据类型的形式定义</h3><p>抽象数据类型可用(D，S,P)<strong>三元组</strong>表示。</p><p>其中:D是<strong>数据对象</strong>;</p><p>​         S是D上的<strong>关系集</strong>;</p><p>​         P是对D的<strong>基本操作集</strong>。</p><p><strong>一个抽象数据类型的定义格魂如下:</strong><br>ADT   <strong>抽象数据类型名</strong>{</p><p><strong>数据对象;&lt;数据对象的定义&gt;</strong></p><p><strong>数据关系:&lt;数据关系的定义&gt;</strong></p><p><strong>基本操作:&lt;基本操作的定义&gt;</strong></p><p>}ADT   <strong>抽象数据类型名</strong></p><p>其中:</p><ul><li><p>数据对象、数据关系的定义用伪代码描述</p></li><li><p>基本操作的定义格式为:</p><ul><li>基本操作名(参数表)</li><li>初始条件:〈初始条件描述〉</li><li>操作结果:〈操作结果描述〉</li></ul></li></ul><p><strong>基本操作</strong>定义格式说明:</p><p><strong>参数表</strong>:赋值参数只为操作提供输入值。</p><p>​            引用参数以&amp;打头，除可提供输入值外，还将返回操作结果。</p><p><strong>初始条件</strong>:描述操作执行之前数据结构和参数应满足的条件，若不满足，则操作失败，并返回相应出错信息。若初始条件为空，则省略之。<br><strong>操作结果</strong>:说明操作正常完成之后，数据结构的变化状况和应返回的结果。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数组指针和指针数组</title>
       <link href="/2023/04/25/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/"/>
       <url>/2023/04/25/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/</url>
@@ -64,9 +83,9 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -75,9 +94,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -108,9 +127,9 @@
     
     
     <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -119,9 +138,9 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
