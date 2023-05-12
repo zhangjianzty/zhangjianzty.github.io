@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>线性表的顺序表示和实现</title>
+      <link href="/2023/05/04/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0/"/>
+      <url>/2023/05/04/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="线性表的存储结构"><a href="#线性表的存储结构" class="headerlink" title="线性表的存储结构"></a>线性表的存储结构</h1><p>在计算机内，线性表有两种基本的存储结构：</p><p><strong>顺序存储结构</strong>和<strong>链式存储结构</strong>。</p><h1 id="线性表的顺序存储表示"><a href="#线性表的顺序存储表示" class="headerlink" title="线性表的顺序存储表示"></a>线性表的顺序存储表示</h1><p>线性表的顺序表示又称为<strong>顺序存储结构</strong>或顺序映像。<br><strong>顺序存储定义</strong>:把逻辑上相邻的数据元素存储在物理上相邻的存储单元中的存储结构。</p><p><img src="/../images/%E7%BA%BF%E6%80%A7%E8%A1%A82.png"></p><p>线性表的第1个数据元素a1的存储位置，称作线性表的<strong>起始位置</strong>或<strong>基地址</strong>。</p><p><img src="/../images/%E7%BA%BF%E6%80%A7%E8%A1%A83.png"></p><h2 id="顺序表中元素存储位置的计算"><a href="#顺序表中元素存储位置的计算" class="headerlink" title="顺序表中元素存储位置的计算"></a>顺序表中元素存储位置的计算</h2><p>如果每个元素占用8个存储单元，ai存储位置是2000单元，则ai+1存储位置是?<br>                        2008单元<br>假设线性表的每个元素需占l个存储单元，则第i+1个数据元素的存储位置和第i个数据元素的存储位置之间满足关系:<br>                     <font color="orange"> LOC(ai+1)&#x3D; LOC( ai) +l</font><br>由此，所有数据元素的存储位置均可由第一个数据元素的存储位置得到:</p><p>​                     <font color="orange"> LOC(ai) &#x3D; LOC(a1)+ (i -1)×l</font></p><h2 id="线性表的顺序存储表示-1"><a href="#线性表的顺序存储表示-1" class="headerlink" title="线性表的顺序存储表示"></a>线性表的顺序存储表示</h2><p>$$<br>顺序表（元素）<br>\left{<br>\begin{aligned}<br>地址连续 \<br>依次存放 \<br>随机存取 \<br>类型相同 \<br>\end{aligned}<br>\right}<br>数组（元素）<br>\Rightarrow<br>用一维数组表示顺序表<br>$$</p><p>$$<br>\left.<br>\begin{aligned}<br>线性表长可变（删除）\<br>数组长度不可动态定义\<br>\end{aligned}<br>\right}<br>\Rightarrow<br>用一变量表示顺序表的长度属性<br>$$</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define LIST_INIT_SIZE 100 //线性表存储空间的初始分配量</span><br><span class="line">typedef struct&#123;</span><br><span class="line">   ElemType elem[LIST_INIT_SIZE];</span><br><span class="line">   int length; //当前长度</span><br><span class="line">&#125;SqList;</span><br></pre></td></tr></table></figure><h2 id="多项式的顺序存储结构类型定义"><a href="#多项式的顺序存储结构类型定义" class="headerlink" title="多项式的顺序存储结构类型定义"></a>多项式的顺序存储结构类型定义</h2><p><img src="/../images/%E7%BA%BF%E6%80%A7%E8%A1%A84.png"></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXSIZE 1000 //多项式可能达到的最大长度</span><br><span class="line"></span><br><span class="line">typedef struct &#123;     //多项式非零项的定义</span><br><span class="line"> float p;//系数</span><br><span class="line"> int e;//指数</span><br><span class="line">&#125;Polynomial;</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">Polynomial *elem;//存储空间的基地址</span><br><span class="line">int length;//多项式中当前项的个数</span><br><span class="line">&#125;SqList; //多项式的顺序存储结构类型为SqList</span><br></pre></td></tr></table></figure><h3 id="图书表的顺序存储结构类型定义"><a href="#图书表的顺序存储结构类型定义" class="headerlink" title="图书表的顺序存储结构类型定义"></a><strong>图书表的顺序存储结构类型定义</strong></h3><p><img src="/../images/%E5%9B%BE%E4%B9%A6%E8%A1%A8.png"></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXSIZE 10000</span><br><span class="line"> //图书表可能达到的最大长度</span><br><span class="line">typedef struct &#123;  //图书信息定义</span><br><span class="line">char no[20];//图书ISBN</span><br><span class="line">char name[50];//图书名字</span><br><span class="line">float price;//图书价格</span><br><span class="line">&#125;Book;</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"> Book *elem;//存储空间的基地址</span><br><span class="line"> int length;//图书表中当前图书个数</span><br><span class="line">&#125;SqList;//图书表的顺序存储结构类型为SqList</span><br></pre></td></tr></table></figure><h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><h2 id="元素类型说明"><a href="#元素类型说明" class="headerlink" title="元素类型说明"></a>元素类型说明</h2><p>顺序表类型定义</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">ElemType data[];</span><br><span class="line">int length;</span><br><span class="line">&#125;SqList; //顺序表类型</span><br></pre></td></tr></table></figure><p>ElemType 为 data[]的数据类型，根据需要更改。</p><p>如</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef char ElemType;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef int ElemType</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">float p;</span><br><span class="line">int e;</span><br><span class="line">&#125;Polynomial;</span><br><span class="line"></span><br><span class="line">typedef stuct&#123;</span><br><span class="line">Polynomial *elem;</span><br><span class="line">int length;</span><br><span class="line">&#125;SqList;</span><br></pre></td></tr></table></figure><h2 id="数组定义"><a href="#数组定义" class="headerlink" title="数组定义"></a>数组定义</h2><p><strong>数组静态分配</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">ElemType data[MaxSize];</span><br><span class="line">int length;</span><br><span class="line">&#125;SqList; //顺序表类型</span><br></pre></td></tr></table></figure><p><strong>数组动态分配</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">ElemType *data;</span><br><span class="line">int length;</span><br><span class="line">&#125;SqList; //顺序表类型</span><br></pre></td></tr></table></figure><p><strong>C语言的内存动态分配</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SqList L;</span><br><span class="line">L.data=(ElemType*)malloc(sizeof(ElemType)*Maxsize);</span><br></pre></td></tr></table></figure><ul><li>malloc(m)函数，开辟m字节长度的地址空间，并返回这段空间的首地址</li><li>sizeof(x)运算，计算变量x的长度</li><li>free(p)函数，释放指针p所指变量的存储空间，即彻底删除一个变量</li></ul><p><font color="orange"><strong>需要加载头文件：&lt;stdlib.h&gt;</strong></font></p><h2 id="传值方式"><a href="#传值方式" class="headerlink" title="传值方式"></a>传值方式</h2><p>把实参的值传送给函数局部工作区相应的副本中，函数使用这个副本执行必要的功能。函数修改的是副本的值，实参的值不变</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream.h&gt;</span><br><span class="line">void swap(float m,float n)</span><br><span class="line">&#123;</span><br><span class="line">float temp;</span><br><span class="line">temp = m;</span><br><span class="line">m = n;</span><br><span class="line">n = temp;</span><br><span class="line">&#125;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">float a,b;</span><br><span class="line">cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">swap(a,b);</span><br><span class="line">cout&lt;&lt;a&lt;&lt;endl&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="传地址方式–指针变量作参数"><a href="#传地址方式–指针变量作参数" class="headerlink" title="传地址方式–指针变量作参数"></a><strong>传地址方式–指针变量作参数</strong></h3><p><strong>形参变化影响实参</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream.h&gt;</span><br><span class="line">void swap(float *m,float *n)&#123;</span><br><span class="line">    float t;</span><br><span class="line">    t = *m;</span><br><span class="line">    *m = *n;</span><br><span class="line">    *n = t;</span><br><span class="line">&#125;</span><br><span class="line">void main()&#123;</span><br><span class="line">    float a,b,*p1,*p2;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    p1=&amp;a;</span><br><span class="line">    p2=&amp;b;</span><br><span class="line">    swap(p1,p2);</span><br><span class="line">    cout&lt;&lt;a&lt;&lt;endl&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>形参变化不影响实参</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void swap(float *m,float *n)</span><br><span class="line">&#123;</span><br><span class="line">    float *t;</span><br><span class="line">    t=m;</span><br><span class="line">    m=n;</span><br><span class="line">    n=t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="传地址方式-数组名作参数"><a href="#传地址方式-数组名作参数" class="headerlink" title="传地址方式 - - 数组名作参数"></a>传地址方式 - - 数组名作参数</h3><p>传递的是数组的首地址</p><p>对形参数组所做的任何改变都将反映到实参数组中</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream.h&gt;</span><br><span class="line">void sub(char b[])</span><br><span class="line">&#123;</span><br><span class="line">b[ ]=“world&quot;;</span><br><span class="line">&#125;</span><br><span class="line">void main(void)&#123;</span><br><span class="line">char a[10]=&quot;hello&quot;;</span><br><span class="line">sub(a);</span><br><span class="line">cout&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="传地址方式-——-引用类型作参数"><a href="#传地址方式-——-引用类型作参数" class="headerlink" title="传地址方式 —— 引用类型作参数"></a>传地址方式 —— 引用类型作参数</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream.h&gt;</span><br><span class="line">void swap(float &amp;m,float &amp;n)&#123;</span><br><span class="line">    float temp;</span><br><span class="line">    temp = m;</span><br><span class="line">    m = n;</span><br><span class="line">    n = temp;</span><br><span class="line">&#125;</span><br><span class="line">void main()&#123;</span><br><span class="line">    float a,b;</span><br><span class="line">    cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    swap(a,b);</span><br><span class="line">    cout&lt;&lt;a&lt;&lt;endl&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="引用类型作参数的三点说明"><a href="#引用类型作参数的三点说明" class="headerlink" title="引用类型作参数的三点说明"></a>引用类型作参数的三点说明</h4><p>(1）传递引用给函数与传递指针的效果是一样的，<strong>形参变化实参也发生变化</strong>。</p><p>(2）引用类型作形参，在内存中并没有产生实参的副本，它<strong>直接对实参操作</strong>;而一般变量作参数，形参与实参就占用不同的存储单元，所以<strong>形参变量的值是实参变量的副本</strong>。因此，当<strong>参数传递的数据量较大</strong>时，用引用比用一般变量传递参数的时间和空间效率都好。</p><p>(3）指针参数虽然也能达到与使用引用的效果，但在被调函数中需要重复使用“*指针变量名”的形式进行运算，这很容易产生错误且程序的阅读性较差;另一方面，在主调函数的调用点处，必须用变量的地址作为实参。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线性表,顺序存储 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>线性表定义和特点</title>
       <link href="/2023/04/29/%E7%BA%BF%E6%80%A7%E8%A1%A8%E5%AE%9A%E4%B9%89%E5%92%8C%E7%89%B9%E7%82%B9/"/>
       <url>/2023/04/29/%E7%BA%BF%E6%80%A7%E8%A1%A8%E5%AE%9A%E4%B9%89%E5%92%8C%E7%89%B9%E7%82%B9/</url>
@@ -114,9 +139,9 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -136,9 +161,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -158,9 +183,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -169,9 +194,9 @@
     
     
     <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
