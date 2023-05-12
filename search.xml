@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>顺序表的插入删除</title>
+      <link href="/2023/05/12/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E5%88%A0%E9%99%A4/"/>
+      <url>/2023/05/12/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E5%88%A0%E9%99%A4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="顺序表的基本操作——插入"><a href="#顺序表的基本操作——插入" class="headerlink" title="顺序表的基本操作——插入"></a>顺序表的基本操作——插入</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MaxSize 10 <span class="comment">//定义最大长度</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line"><span class="type">int</span> data[MaxSize]; <span class="comment">//用静态的&quot;数组&quot;存放数据元素</span></span><br><span class="line"><span class="type">int</span> length;<span class="comment">//顺序表的当前长度</span></span><br><span class="line">&#125;SqList;<span class="comment">//顺序表的类型定义</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ListInsert</span><span class="params">(SqList&amp; L, <span class="type">int</span> i, <span class="type">int</span> e)</span> </span>&#123;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = L.length; j &gt;= i; j--)<span class="comment">//将第i个元素及之后的元素后移</span></span><br><span class="line">L.data[j] = L.data[j - <span class="number">1</span>]; </span><br><span class="line">L.data[i - <span class="number">1</span>] = e;<span class="comment">//在位置i处放入e</span></span><br><span class="line">L.length++;<span class="comment">//长度+1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">InitList</span><span class="params">(SqList&amp; L)</span> </span>&#123;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MaxSize; i++)</span><br><span class="line">L.data[i] = <span class="number">0</span>;<span class="comment">//将所有数据元素设置为默认初始值</span></span><br><span class="line">L.length = <span class="number">0</span>;<span class="comment">//顺序表初始长度为0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">SqList L;<span class="comment">//声明一个顺序表</span></span><br><span class="line"><span class="built_in">InitList</span>(L); <span class="comment">//初始化顺序表</span></span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="built_in">ListInsert</span>(L, <span class="number">3</span>, <span class="number">3</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>void ListInsert(SqList&amp; L, int i, int e)  基本操作：在L的位序i处插入元素e</p><p>L.data[j] &#x3D; L.data[j - 1];   注意位序，数组下标的关系，并从后面的元素依次后移</p><p><strong>好代码  具有“健壮性”</strong></p><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">ListInsert</span><span class="params">(SqList&amp; L, <span class="type">int</span> i, <span class="type">int</span> e)</span> &#123;</span><br><span class="line"><span class="keyword">if</span> (i&lt;<span class="number">1</span> || i&gt;L.length + <span class="number">1</span>)<span class="comment">//判断i的范围是否有效</span></span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">if</span> (L.length &gt; MaxSize)<span class="comment">//当前存储空间已满，不能插入</span></span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = L.length; j &gt;= i; j--)<span class="comment">//将第i个元素及之后的元素后移</span></span><br><span class="line">L.data[j] = L.data[j - <span class="number">1</span>]; </span><br><span class="line">L.data[i - <span class="number">1</span>] = e;<span class="comment">//在位置i处放入e</span></span><br><span class="line">L.length++;<span class="comment">//长度加1</span></span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>插入操作的时间复杂度</p><p>L.data[j] &#x3D; L.data[j - 1]; </p><p><strong>关注最深层循环语句的执行次数与问题规模n的关系</strong></p><p>最好情况：新元素插入到表尾，不需要移动元素</p><p>​i&#x3D;n+1，循环0次；<strong>最好时间复杂度&#x3D;O(1)</strong></p><p>最坏情况：新元素插入到表头，需要将原有的n个元素全都向后移动</p><p>​i&#x3D;1，循环n次；<strong>最坏时间复杂度&#x3D;O(n)</strong>;</p><p>平均情况：假设新元素插入到任何一个位置的概率相同，即i&#x3D;1,2,3，…，length+1的概率都是p&#x3D;1&#x2F;n+1</p><p>​平均循环次数&#x3D;n&#x2F;2 &#x3D;&gt; <strong>平均时间复杂度 &#x3D; O(n)</strong>;</p><h1 id="顺序表的基本操作——删除"><a href="#顺序表的基本操作——删除" class="headerlink" title="顺序表的基本操作——删除"></a>顺序表的基本操作——删除</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MaxSize 10</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="type">int</span> data[MaxSize];</span><br><span class="line">    <span class="type">int</span> length;</span><br><span class="line">&#125;SqList;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">InitList</span><span class="params">(SqList&amp; L)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; MaxSize; i++)</span><br><span class="line">        L.data[i] = <span class="number">0</span>;</span><br><span class="line">    L.length = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">ListDelete</span><span class="params">(SqList&amp; L, <span class="type">int</span> i, <span class="type">int</span>&amp; e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i&lt;<span class="number">0</span> || i&gt;L.length)    <span class="comment">// 判断i的范围是否有效</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    e = L.data[i - <span class="number">1</span>];             <span class="comment">//  将被删除元素的值赋给e</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i; j &lt; L.length; j++) <span class="comment">//将第i个位置后的元素前移</span></span><br><span class="line">        L.data[j - <span class="number">1</span>] = L.data[j];</span><br><span class="line">    L.length--;             <span class="comment">//  线性表的长度减1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SqList L;   <span class="comment">//声明一个顺序表</span></span><br><span class="line">    <span class="built_in">InitList</span>(L);    <span class="comment">//初始化顺序表</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="type">int</span> e = <span class="number">-1</span>; <span class="comment">//用变量e把删除的元素“带回来”</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">ListDelete</span>(L, <span class="number">3</span>, e))</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;已删除第三个元素，删除元素值为%d&quot;</span>\n, e);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;位序i不合法，删除失败\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>删除操作的时间复杂度</p><p>L.data[j - 1] &#x3D; L.data[j];</p><p><strong>最好情况</strong>：删除表尾元素，不需要移动其他元素<br>                    i &#x3D;n，循环o次;<strong>最好时间复杂度&#x3D;o(1)</strong><br><strong>最坏情况</strong>：删除表头元素，需要将后续的n-1个元素全都向前移动<br>                    i&#x3D; 1，循环n-1次;<strong>最坏时间复杂度&#x3D; O(n)</strong>;<br><strong>平均情况</strong>：假设删除任何一个元素的概率相同，即i&#x3D; 1,2,3. … , length 的概率都是p &#x3D;1&#x2F;n</p><p>​平均循环次数&#x3D;n-1&#x2F;2,<strong>平均时间复杂度&#x3D;O(n)</strong></p><h1 id="知识回顾与重要考点"><a href="#知识回顾与重要考点" class="headerlink" title="知识回顾与重要考点"></a>知识回顾与重要考点</h1><p><img src="/../images/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E6%8F%92%E5%85%A5%E5%88%A0%E9%99%A4.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构,顺序表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>线性表的顺序表示和实现</title>
       <link href="/2023/05/04/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0/"/>
       <url>/2023/05/04/%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0/</url>
@@ -139,17 +164,6 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -164,6 +178,17 @@
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
