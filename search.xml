@@ -20,7 +20,7 @@
       
         <tags>
             
-            <tag> 数据结构,顺序表,链表 </tag>
+            <tag> 数据结构，顺序表，链表 </tag>
             
         </tags>
       
@@ -45,7 +45,7 @@
       
         <tags>
             
-            <tag> 数据结构,双链表,循环链表,静态链表 </tag>
+            <tag> 数据结构，双链表，循环链表，静态链表 </tag>
             
         </tags>
       
@@ -70,7 +70,7 @@
       
         <tags>
             
-            <tag> 数据结构,单链表 </tag>
+            <tag> 数据结构，单链表 </tag>
             
         </tags>
       
@@ -95,7 +95,7 @@
       
         <tags>
             
-            <tag> 数据结构,顺序表 </tag>
+            <tag> 数据结构，顺序表 </tag>
             
         </tags>
       
@@ -120,7 +120,7 @@
       
         <tags>
             
-            <tag> 数据结构,顺序表 </tag>
+            <tag> 数据结构，顺序表 </tag>
             
         </tags>
       
@@ -145,7 +145,7 @@
       
         <tags>
             
-            <tag> 线性表,顺序存储 </tag>
+            <tag> 线性表，顺序存储 </tag>
             
         </tags>
       
@@ -275,9 +275,9 @@
     
     
     <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -297,9 +297,9 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -319,9 +319,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
